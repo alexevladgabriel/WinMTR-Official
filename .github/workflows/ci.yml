@@ -71,3 +71,11 @@ jobs:
           go build -trimpath \
             -ldflags "-s -w -X main.version=$(git describe --tags --always --dirty)" \
             -o "mtr-${GOOS}-${GOARCH}${ext}" ./cmd/mtr
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mtr-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: mtr-${{ matrix.goos }}-${{ matrix.goarch }}*
+          retention-days: 14
+          if-no-files-found: error
