@@ -10,3 +10,14 @@ x64/
 *.pdb
 *.ilk
 *.exe
+
+# Go build artifacts
+/mtr
+/icmptest
+/dist/
+*.test
+*.out
+
+# Local agent tooling
+/.claude/
+/.serena/

@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: build + publish binaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+          fetch-depth: 0  # full history so `git describe` finds the tag
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache: true
+
+      - name: vet + test
+        run: |
+          go vet ./...
+          go test -race ./...
+
+      - name: cross-compile all platforms
+        run: make release VERSION="${GITHUB_REF_NAME}"
+
+      - name: checksums
+        working-directory: dist
+        run: sha256sum * > SHA256SUMS.txt
+
+      - name: publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true
