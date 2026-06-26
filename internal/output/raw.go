@@ -10,11 +10,12 @@ import (
 // Raw writes the raw output (-l), matching mtr's raw format from FORMATS file.
 //
 // Format:
-//   h <pos> <host IP>           - host line
-//   d <pos> <hostname>          - DNS resolved name
-//   x <pos> <seqnum>            - xmit line
-//   p <pos> <pingtime(usec)> <seqnum>  - ping result
-//   m <pos> <label> <tc> <s> <ttl>     - MPLS line
+//
+//	h <pos> <host IP>           - host line
+//	d <pos> <hostname>          - DNS resolved name
+//	x <pos> <seqnum>            - xmit line
+//	p <pos> <pingtime(usec)> <seqnum>  - ping result
+//	m <pos> <label> <tc> <s> <ttl>     - MPLS line
 func Raw(w io.Writer, cfg *trace.Config, hops []trace.HopSnapshot, maxHop int) {
 	for at := cfg.FstTTL - 1; at < maxHop && at < len(hops); at++ {
 		hop := &hops[at]
@@ -53,7 +54,8 @@ func Raw(w io.Writer, cfg *trace.Config, hops []trace.HopSnapshot, maxHop int) {
 // Split writes the split output (-p), matching mtr's split format from FORMATS file.
 //
 // Format:
-//   <pos> <host> <loss%> <rcvd> <sent> <best> <avg> <worst>
+//
+//	<pos> <host> <loss%> <rcvd> <sent> <best> <avg> <worst>
 func Split(w io.Writer, cfg *trace.Config, hops []trace.HopSnapshot, maxHop int) {
 	for at := cfg.FstTTL - 1; at < maxHop && at < len(hops); at++ {
 		hop := &hops[at]

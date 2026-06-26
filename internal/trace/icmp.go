@@ -398,4 +398,3 @@ func (p *ICMPProber) Close() error {
 	}
 	return nil
 }
-

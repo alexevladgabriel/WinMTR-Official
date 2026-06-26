@@ -6,11 +6,11 @@ import (
 )
 
 const (
-	MaxFld     = 20
-	MinPort    = 1024
-	MaxPort    = 65535
-	MaxPacket  = 65535
-	MinPacket  = 28
+	MaxFld      = 20
+	MinPort     = 1024
+	MaxPort     = 65535
+	MaxPacket   = 65535
+	MinPacket   = 28
 	MaxSequence = 65536
 	MinSequence = 33000
 )
@@ -42,17 +42,17 @@ const (
 
 // Config holds all mtr runtime options, mirroring struct mtr_ctl.
 type Config struct {
-	MaxPing      int
-	WaitTime     float64
-	GraceTime    float64
-	Hostname     string
-	Hostnames    []string // multiple targets from -F or positional args
+	MaxPing          int
+	WaitTime         float64
+	GraceTime        float64
+	Hostname         string
+	Hostnames        []string // multiple targets from -F or positional args
 	InterfaceName    string
 	InterfaceAddress string
 	LocalHostname    string
 
-	IPInfoNo   int
-	IPInfoMax  int
+	IPInfoNo        int
+	IPInfoMax       int
 	IPInfoProvider4 string
 	IPInfoProvider6 string
 
@@ -61,16 +61,16 @@ type Config struct {
 	TOS        int
 	Mark       uint32
 
-	AF       int // 0=unspec, 4=IPv4, 6=IPv6
-	Protocol Protocol
-	FstTTL   int
-	MaxTTL   int
-	DueTTL   int
-	MaxUnknown    int
+	AF             int // 0=unspec, 4=IPv4, 6=IPv6
+	Protocol       Protocol
+	FstTTL         int
+	MaxTTL         int
+	DueTTL         int
+	MaxUnknown     int
 	MaxDisplayPath int
-	RemotePort int
-	LocalPort  int
-	ProbeTimeout int // microseconds
+	RemotePort     int
+	LocalPort      int
+	ProbeTimeout   int // microseconds
 
 	FldActive string // active fields string, e.g. "LS NABWV"
 
@@ -95,26 +95,26 @@ type Config struct {
 // DefaultConfig returns the default configuration matching mtr's defaults.
 func DefaultConfig() *Config {
 	return &Config{
-		MaxPing:      10,
-		WaitTime:     1.0,
-		GraceTime:    5.0,
-		DNS:          true,
-		UseDNS:       true,
-		PacketSize:   64,
-		AF:           0, // unspec
-		Protocol:     ProtoICMP,
-		FstTTL:       1,
-		MaxTTL:       30,
-		DueTTL:       0,
-		MaxUnknown:   12,
-		MaxDisplayPath: 8,
-		ProbeTimeout: int((10 * time.Second).Microseconds()),
-		Interactive:  true,
-		FldActive:    "LS NABWV",
-		IPInfoNo:     -1,
-		IPInfoMax:    -1,
+		MaxPing:         10,
+		WaitTime:        1.0,
+		GraceTime:       5.0,
+		DNS:             true,
+		UseDNS:          true,
+		PacketSize:      64,
+		AF:              0, // unspec
+		Protocol:        ProtoICMP,
+		FstTTL:          1,
+		MaxTTL:          30,
+		DueTTL:          0,
+		MaxUnknown:      12,
+		MaxDisplayPath:  8,
+		ProbeTimeout:    int((10 * time.Second).Microseconds()),
+		Interactive:     true,
+		FldActive:       "LS NABWV",
+		IPInfoNo:        -1,
+		IPInfoMax:       -1,
 		IPInfoProvider4: "origin.asn.cymru.com",
 		IPInfoProvider6: "origin6.asn.cymru.com",
-		BitPattern:   0,
+		BitPattern:      0,
 	}
 }

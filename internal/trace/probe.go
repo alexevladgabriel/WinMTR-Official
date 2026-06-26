@@ -7,12 +7,12 @@ import (
 
 // ProbeResult holds the result of a single probe.
 type ProbeResult struct {
-	TTL      int
-	Addr     net.IP    // responding address
-	RTT      time.Duration
-	Err      int       // ICMP error type (0 = success)
-	Reached  bool      // true if destination was reached
-	ICMPExt  []byte    // raw ICMP extension data (for MPLS parsing)
+	TTL     int
+	Addr    net.IP // responding address
+	RTT     time.Duration
+	Err     int    // ICMP error type (0 = success)
+	Reached bool   // true if destination was reached
+	ICMPExt []byte // raw ICMP extension data (for MPLS parsing)
 }
 
 // Prober is the interface for sending probes at a specific TTL.

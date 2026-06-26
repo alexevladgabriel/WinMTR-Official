@@ -1,0 +1,8 @@
+# Enforce LF for Go sources and build files so gofmt/CI stay consistent
+# across platforms (the original tree shipped with CRLF line endings).
+*.go     text eol=lf
+go.mod   text eol=lf
+go.sum   text eol=lf
+Makefile text eol=lf
+*.yml    text eol=lf
+*.md     text eol=lf

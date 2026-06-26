@@ -30,11 +30,11 @@ import (
 
 // Windows ICMP reply status codes (from iphlpapi.h).
 const (
-	ipSuccess            = 0
-	ipTTLExpiredTransit  = 11013
-	ipTTLExpiredReassem  = 11014
-	ipReqTimedOut        = 11010
-	ipFlagDontFragment   = 0x02
+	ipSuccess           = 0
+	ipTTLExpiredTransit = 11013
+	ipTTLExpiredReassem = 11014
+	ipReqTimedOut       = 11010
+	ipFlagDontFragment  = 0x02
 )
 
 var (

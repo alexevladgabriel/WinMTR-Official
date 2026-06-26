@@ -21,13 +21,16 @@ const maxLabels = 8
 // The extension data follows the ICMP payload per RFC 4884/4950.
 //
 // Extension header (4 bytes):
-//   version (4 bits) | reserved (12 bits) | checksum (16 bits)
+//
+//	version (4 bits) | reserved (12 bits) | checksum (16 bits)
 //
 // Each extension object:
-//   length (16 bits) | class-num (8 bits) | c-type (8 bits) | data...
+//
+//	length (16 bits) | class-num (8 bits) | c-type (8 bits) | data...
 //
 // For MPLS (class=1, c-type=1), data is 4-byte label entries:
-//   label (20 bits) | TC (3 bits) | S (1 bit) | TTL (8 bits)
+//
+//	label (20 bits) | TC (3 bits) | S (1 bit) | TTL (8 bits)
 func ParseICMPExtension(data []byte) *Stack {
 	if len(data) < 8 {
 		return nil
